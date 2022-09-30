@@ -1,7 +1,6 @@
 import discord
 from discord.ext import commands
 from discord.ext.commands import Context
-from utils import song as song_brain
 from helpers import checks
 
 
@@ -26,7 +25,8 @@ class SongWriter(commands.Cog, name="songwriter"):
         :param context: The application command context.
         :param topic: The topic that should be song title given by the user.
         """
-        op_song = song_brain.normal_song(topic)
+        op_song = ""
+        print(op_song)
         embed = discord.Embed(
             title=topic,
             description=op_song,

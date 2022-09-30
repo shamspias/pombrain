@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Context
 from helpers import checks
+from utils import SongCore
 
 
 class SongWriter(commands.Cog, name="songwriter"):
@@ -25,7 +26,8 @@ class SongWriter(commands.Cog, name="songwriter"):
         :param context: The application command context.
         :param topic: The topic that should be song title given by the user.
         """
-        op_song = ""
+
+        op_song = SongCore.normal_song(topic)
         print(op_song)
         embed = discord.Embed(
             title=topic,

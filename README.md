@@ -22,7 +22,7 @@ Please do not open issues or pull requests about things that are written in the 
 
 ## How to set up
 
-To set up the bot I made it as simple as possible. I now created a [config.json](config.json) file where you can put the
+To set up the bot I made it as simple as possible. I now created a [config_example.json](config_example.json) file just rename it to [config.json](config.json) where you can put the
 needed things to edit.
 
 Here is an explanation of what everything is:

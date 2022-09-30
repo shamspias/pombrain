@@ -100,7 +100,7 @@ class General(commands.Cog, name="general"):
             description=f"{context.guild}",
             color=0x9C84EF
         )
-        if context.guild.icon is not None:            
+        if context.guild.icon is not None:
             embed.set_thumbnail(
                 url=context.guild.icon.url
             )

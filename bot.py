@@ -97,6 +97,7 @@ The config is available using the following code:
 bot.config = config
 bot.db = connect_db()
 
+
 @bot.event
 async def on_ready() -> None:
     """

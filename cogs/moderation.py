@@ -76,7 +76,8 @@ class Moderation(commands.Cog, name="moderation"):
     )
     @commands.has_permissions(manage_nicknames=True)
     @checks.not_blacklisted()
-    @app_commands.describe(user="The user that should have a new nickname.", nickname="The new nickname that should be set.")
+    @app_commands.describe(user="The user that should have a new nickname.",
+                           nickname="The new nickname that should be set.")
     async def nick(self, context: Context, user: discord.User, nickname: str = None) -> None:
         """
         Change the nickname of a user on a server.
@@ -199,7 +200,8 @@ class Moderation(commands.Cog, name="moderation"):
     )
     @checks.not_blacklisted()
     @commands.has_permissions(manage_messages=True)
-    @app_commands.describe(user="The user that should get their warning removed.", warn_id="The ID of the warning that should be removed.")
+    @app_commands.describe(user="The user that should get their warning removed.",
+                           warn_id="The ID of the warning that should be removed.")
     async def warning_add(self, context: Context, user: discord.User, warn_id: int) -> None:
         """
         Warns a user in his private messages.
@@ -233,7 +235,7 @@ class Moderation(commands.Cog, name="moderation"):
         """
         warnings_list = db_manager.get_warnings(user.id, context.guild.id)
         embed = discord.Embed(
-            title = f"Warnings of {user}",
+            title=f"Warnings of {user}",
             color=0x9C84EF
         )
         description = ""
@@ -273,7 +275,8 @@ class Moderation(commands.Cog, name="moderation"):
     )
     @commands.has_permissions(ban_members=True)
     @checks.not_blacklisted()
-    @app_commands.describe(user_id="The user ID that should be banned.", reason="The reason why the user should be banned.")
+    @app_commands.describe(user_id="The user ID that should be banned.",
+                           reason="The reason why the user should be banned.")
     async def hackban(self, context: Context, user_id: str, reason: str = "Not specified") -> None:
         """
         Bans a user without the user having to be in the server.

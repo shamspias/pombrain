@@ -52,7 +52,7 @@ class General(commands.Cog, name="general"):
         :param context: The hybrid command context.
         """
         embed = discord.Embed(
-            description="Used [Krypton's](https://krypton.ninja) template",
+            description="Used [GPT-NEOX](https://github.com/EleutherAI/gpt-neox) for Model",
             color=0x9C84EF
         )
         embed.set_author(
@@ -60,7 +60,7 @@ class General(commands.Cog, name="general"):
         )
         embed.add_field(
             name="Owner:",
-            value="Krypton#7331",
+            value="SAM#1837",
             inline=True
         )
         embed.add_field(
@@ -177,7 +177,7 @@ class General(commands.Cog, name="general"):
         :param context: The hybrid command context.
         """
         embed = discord.Embed(
-            description=f"Join the support server for the bot by clicking [here](https://discord.gg/mTBrXyWxAF).",
+            description=f"Join the support server for the bot by clicking [here](https://discord.gg/6CFSRxWTWw).",
             color=0xD75BF4
         )
         try:

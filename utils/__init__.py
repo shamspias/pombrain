@@ -1,1 +1,1 @@
-from .song import SongCore
+from .song import normal_song, categories_song

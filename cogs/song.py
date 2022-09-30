@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from discord.ext.commands import Context
 from helpers import checks
+from utils import normal_song
 
 
 class SongWriter(commands.Cog, name="songwriter"):

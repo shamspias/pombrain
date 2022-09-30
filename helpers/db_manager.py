@@ -8,6 +8,7 @@ Version: 5.1
 
 import sqlite3
 
+
 def is_blacklisted(user_id: int) -> bool:
     """
     This function will check if a user is blacklisted.
@@ -63,11 +64,14 @@ def add_warn(user_id: int, server_id: int, moderator_id: int, reason: str) -> in
     connection = sqlite3.connect("database/database.db")
     cursor = connection.cursor()
     # Get the last `id`
-    rows = cursor.execute("SELECT id FROM warns WHERE user_id=? AND server_id=? ORDER BY id DESC LIMIT 1", (user_id, server_id,)).fetchone()
-    warn_id = rows[0]+1 if rows is not None else 1
-    cursor.execute("INSERT INTO warns(id, user_id, server_id, moderator_id, reason) VALUES (?, ?, ?, ?, ?)", (warn_id, user_id, server_id, moderator_id, reason,))
+    rows = cursor.execute("SELECT id FROM warns WHERE user_id=? AND server_id=? ORDER BY id DESC LIMIT 1",
+                          (user_id, server_id,)).fetchone()
+    warn_id = rows[0] + 1 if rows is not None else 1
+    cursor.execute("INSERT INTO warns(id, user_id, server_id, moderator_id, reason) VALUES (?, ?, ?, ?, ?)",
+                   (warn_id, user_id, server_id, moderator_id, reason,))
     connection.commit()
-    rows = cursor.execute("SELECT COUNT(*) FROM warns WHERE user_id=? AND server_id=?", (user_id, server_id,)).fetchone()[0]
+    rows = \
+    cursor.execute("SELECT COUNT(*) FROM warns WHERE user_id=? AND server_id=?", (user_id, server_id,)).fetchone()[0]
     connection.close()
     return rows
 
@@ -84,9 +88,11 @@ def remove_warn(warn_id: int, user_id: int, server_id: int) -> int:
     cursor = connection.cursor()
     cursor.execute("DELETE FROM warns WHERE id=? AND user_id=? AND server_id=?", (warn_id, user_id, server_id,))
     connection.commit()
-    rows = cursor.execute("SELECT COUNT(*) FROM warns WHERE user_id=? AND server_id=?", (user_id, server_id,)).fetchone()[0]
+    rows = \
+    cursor.execute("SELECT COUNT(*) FROM warns WHERE user_id=? AND server_id=?", (user_id, server_id,)).fetchone()[0]
     connection.close()
     return rows
+
 
 def get_warnings(user_id: int, server_id: int) -> list:
     """
@@ -98,7 +104,9 @@ def get_warnings(user_id: int, server_id: int) -> list:
     """
     connection = sqlite3.connect("database/database.db")
     cursor = connection.cursor()
-    cursor.execute("SELECT user_id, server_id, moderator_id, reason, strftime('%s', created_at), id FROM warns WHERE user_id=? AND server_id=?", (user_id, server_id,))
+    cursor.execute(
+        "SELECT user_id, server_id, moderator_id, reason, strftime('%s', created_at), id FROM warns WHERE user_id=? AND server_id=?",
+        (user_id, server_id,))
     result = cursor.fetchall()
     connection.close()
     return result

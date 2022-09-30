@@ -71,7 +71,8 @@ def add_warn(user_id: int, server_id: int, moderator_id: int, reason: str) -> in
                    (warn_id, user_id, server_id, moderator_id, reason,))
     connection.commit()
     rows = \
-    cursor.execute("SELECT COUNT(*) FROM warns WHERE user_id=? AND server_id=?", (user_id, server_id,)).fetchone()[0]
+        cursor.execute("SELECT COUNT(*) FROM warns WHERE user_id=? AND server_id=?", (user_id, server_id,)).fetchone()[
+            0]
     connection.close()
     return rows
 
@@ -89,7 +90,8 @@ def remove_warn(warn_id: int, user_id: int, server_id: int) -> int:
     cursor.execute("DELETE FROM warns WHERE id=? AND user_id=? AND server_id=?", (warn_id, user_id, server_id,))
     connection.commit()
     rows = \
-    cursor.execute("SELECT COUNT(*) FROM warns WHERE user_id=? AND server_id=?", (user_id, server_id,)).fetchone()[0]
+        cursor.execute("SELECT COUNT(*) FROM warns WHERE user_id=? AND server_id=?", (user_id, server_id,)).fetchone()[
+            0]
     connection.close()
     return rows
 

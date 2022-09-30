@@ -30,6 +30,7 @@ else:
     with open("config.json") as file:
         config = json.load(file)
 
+OPEN_AI_KEY = config["open_ai_key"]
 """	
 Setup bot intents (events restrictions)
 For more information about intents, please go to the following websites:

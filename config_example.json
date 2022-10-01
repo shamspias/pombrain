@@ -6,5 +6,6 @@
   "owners": [
     123456789,
     987654321
-  ]
+  ],
+  "open_ai_key": "YOUR_OPEN_AI_API_KEY"
 }

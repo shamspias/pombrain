@@ -30,6 +30,7 @@ else:
     with open("config.json") as file:
         config = json.load(file)
 
+OPEN_AI_KEY = config["open_ai_key"]
 """	
 Setup bot intents (events restrictions)
 For more information about intents, please go to the following websites:
@@ -71,7 +72,7 @@ It is recommended to use slash commands and therefore not use prefix commands.
 
 If you want to use prefix commands, make sure to also enable the intent below in the Discord developer portal.
 """
-# intents.message_content = True
+intents.message_content = True
 
 bot = Bot(command_prefix=commands.when_mentioned_or(config["prefix"]), intents=intents, help_command=None)
 
@@ -221,6 +222,22 @@ async def load_cogs() -> None:
                 print(f"Failed to load extension {extension}\n{exception}")
 
 
+async def load_ai_brain() -> None:
+    """
+    The code in this function is executed whenever the bot will start.
+    """
+    for file in os.listdir(f"./ai_brain"):
+        if file.endswith(".py"):
+            extension = file[:-3]
+            try:
+                await bot.load_extension(f"ai_brain.{extension}")
+                print(f"Loaded extension '{extension}'")
+            except Exception as e:
+                exception = f"{type(e).__name__}: {e}"
+                print(f"Failed to load extension {extension}\n{exception}")
+
+
 init_db()
 asyncio.run(load_cogs())
+asyncio.run(load_ai_brain())
 bot.run(config["token"])
